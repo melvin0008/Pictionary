@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('pictionary:server');
 var http = require('http');
-
+var winston = require('winston');
 /**
  * Get port from environment and store in Express.
  */
@@ -25,16 +25,18 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-var serverforsockete=server.listen(port);
+var serverforsocket=server.listen(port);
 
 
 var io = require('socket.io').listen(server);
-var pict=require()
+var pict=require('../pictionary')
 
-io.sockets.on('connection', function (socket) {
-    //console.log('client connected');
-    pict.initGame(io, socket);
+
+io.on('connection', function (socket) {
+    winston.log('info','client connected');
+    socket.emit('news', { hello: 'world' });
 });
+
 
 server.on('error', onError);
 server.on('listening', onListening);
