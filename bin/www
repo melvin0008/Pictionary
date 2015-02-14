@@ -34,16 +34,6 @@ var pict=require('../pictionary')
 
 io.on('connection', function (socket) {
     winston.log('info','client connected');
-    
-    socket.on( 'InitPath', function( data, session ) {
-    socket.broadcast.emit( 'InitPath');
-  });
-
-
-
-
-
-
     socket.on( 'drawLine', function( data, session ) {
     console.log("Illandra");
     socket.broadcast.emit( 'drawLine', data );
