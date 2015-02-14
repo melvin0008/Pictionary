@@ -1,38 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title> <%= title %> </title>
     <link rel='stylesheet' href='/css/style.css' />
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="/js/drawing.js"></script>
-  <script src="/js/jquery-1.11.2.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-<script>
-  var socket = io.connect('http://localhost:3000');
-  socket.on('news', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
-</script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/lib/js/jquery-1.11.2.min.js"></script>
+    <script src="/lib/js/bootstrap.min.js"></script>
+    <script src="/js/client.js"></script>
+    <script src="/lib/js/paper-full.min.js" ></script>
+    <script src="/js/draw.js" type="text/paperscript" canvas="draw"></script>
+
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
- 	<div id="drawingPad">
-			<!-- This is where all the code will be place dynamically -->
-	</div>
+    <canvas id="draw" resize="true"> </canvas>
 </body>
-	<script type="text/javascript">
-		$(document).bind("touchmove", function(e) {
-			e.preventDefault();
-		});
-		// overriding default options
-		var options = {
-			width:800,
-			height:500
-		},
-		//init the drawpad
-		dp = new DrawingPad(options);
-		dp.init("#drawingPad");
-	</script>
 </html>
