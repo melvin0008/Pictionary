@@ -1,1 +1,1 @@
-var io = io.connect('https://piction.herokuapp.com/');
+var socket = io.connect('http://localhost:3000');

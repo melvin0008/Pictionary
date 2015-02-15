@@ -32,13 +32,13 @@ function drawLine(point) {
 } 
   
 function emitLine(pointList) {
-  var sessionId = io.io.engineid;
-  io.emit( 'drawLine', pointList, sessionId )
+  var sessionId = socket.io.engineid;
+  socket.emit( 'drawLine', pointList, sessionId )
 }
 
 
 //Socket IO After it receives a client request
-io.on( 'drawLine', function( data ) {
+socket.on( 'drawLine', function( data ) {
   drawOnClientEnd(data);
 });
 
