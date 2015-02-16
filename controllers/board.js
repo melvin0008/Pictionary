@@ -28,7 +28,7 @@ exports.createGame=function(io)
 			{
                   //  socket.broadcast.to(room).emit('new fan');
 		            var room=socket.room
-		            io.sockets.in(room).emit('drawLine',data);
+		            io.to(room).emit('drawLine',data);
 		        
 	  		});
 		});

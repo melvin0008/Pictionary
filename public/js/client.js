@@ -1,4 +1,4 @@
-var socket = io.connect('http://piction.herokuapp.com');
+var socket = io.connect();
 
 socket.on('connect', function(){
 			// firing back the connect event to the server
