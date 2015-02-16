@@ -63,10 +63,10 @@ io.on('connection', function (socket)
                 socket.broadcast.to(room).emit('drawLine',data);
             
         });
-        socket.on('disconnect', function(session){
-          winston.log('info','client disconnected');
-          socket.leave(roomName);
-      });
+      //   socket.on('disconnect', function(session){
+      //     winston.log('info','client disconnected');
+      //     socket.leave(roomName);
+      // });
 
     });
 server.on('error', onError);
