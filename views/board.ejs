@@ -1,11 +1,14 @@
 <%- include layouts/header.ejs %>
 
 <script src="/js/client.js"></script>
-<script src="/lib/js/paper-full.min.js" ></script>
+<script src="/lib/js/paper-full.js" ></script>
 <script src="/js/draw.js" type="text/paperscript" canvas="draw"></script>
 
-    <div class="container" style="width:200px;">
-      <canvas id="draw" resize="true"> </canvas>
+    <div class="container ">
+    <div class="juumbotron">
+			<h1 align="center">Draw</h1>
     </div>
-
+      <canvas id="draw" > </canvas>
+    </div>
+<script type="text/javascript" src="/js/canvasmod.js"></script>
 <%- include layouts/footer.ejs %>

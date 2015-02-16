@@ -11,6 +11,9 @@ socket.on('connect', function(){
 			socket.emit("connectman",sessionId, {room:roomname});
 });
 
+
+
+
 // socket.on('disconnect', function(){
 // 	var sessionId = socket.io.engineid;
 // 	socket.emit('disconnect',sessionId);
