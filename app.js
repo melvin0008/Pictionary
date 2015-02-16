@@ -24,10 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var server = http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
-var io = require('socket.io').listen(server);
 
 
 
@@ -37,7 +33,7 @@ var board= require('./controllers/board');
 
 
 app.get('/',home.index);
-app.get('/room/:roomId',board.createGame(io));
+app.get('/room/:roomId',board.createGame);
 
 
 // app.use('/', routes,io);

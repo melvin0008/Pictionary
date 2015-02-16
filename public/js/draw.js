@@ -33,6 +33,7 @@ function drawLine(point) {
   
 function emitLine(pointList) {
   var sessionId = socket.io.engineid;
+  console.log(socket);
 
   socket.emit( 'drawLine', pointList, sessionId )
 }
