@@ -1,4 +1,4 @@
-var socket = io.connect('http://localhost:3000');
+var socket = io.connect('http://piction.herokuapp.com');
 
 socket.on('connect', function(){
 			// firing back the connect event to the server
