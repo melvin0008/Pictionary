@@ -1,5 +1,68 @@
 <%- include layouts/header.ejs %>
-<div class="container">
-for drawing click on this <a href="/room/draw">link</a>
+<!-- for drawing click on this <a href="/room/draw">link</a> -->
+	<div class="jumbotron">
+		<div class="row">
+			<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#joinRoom">
+			  Join a Room
+			</button>
+			<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#createRoom">
+			  Create a Room
+			</button>
+		</div>
+	</div>
+	
+
+<!-- Modal -->
+<div class="modal fade" id="joinRoom">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Join a Room</h4>
+            </div>
+            <div class="modal-body">
+            	<form>
+		          <div class="form-group">
+		            <label for="username" class="control-label">Enter Username:</label>
+		            <input type="text" class="form-control" id="username">
+		          </div>
+
+		          <div class="form-group">
+		            <label for="roomname" class="control-label">Enter RoomName to Join</label>
+		            <input type="text" class="form-control" id="roomname">
+		          </div>
+		        </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            	<button type="button" class="btn btn-primary">Join</button>
+            </div>
+        </div>
+    </div>
 </div>
+<div class="modal fade" id="createRoom">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Create a Room</h4>
+            </div>
+            <div class="modal-body">
+            	<form>
+		          <div class="form-group">
+		            <label for="roomname" class="control-label">Enter name of the room to be created</label>
+		            <input type="text" class="form-control" id="croomname">
+		          </div>
+		          <div class="form-group">
+		            <label for="username" class="control-label">Enter Username:</label>
+		            <input type="text" class="form-control" id="cusername">
+		          </div>
+		        </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            	<button type="button" class="btn btn-primary" onclick="createroom()">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <%- include layouts/footer.ejs %>

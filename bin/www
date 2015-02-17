@@ -44,17 +44,31 @@ io.on('connection', function (socket)
         
       // });
 
-      socket.on( 'connectman', function(session ,data) 
+      socket.on( 'connectman', function(session) 
       {
-        console.log(data.room);
-        var roomName=data.room;
-        winston.log('info','client connected');
-        console.log(roomName);
-        socket.room=roomName;
-        socket.join(roomName);
+        winston.log('info',"Client connected");
       });
 
-      
+     socket.on( 'createroom', function(session ,data) 
+      {
+        var roomname=data.room;
+        var username=data.user;
+        winston.log('info',"Client connected");
+        //check whether room exists 
+        //if not
+        //
+        socket.username=username;
+        socket.roomname=roomname;
+        socket.join(roomname);
+        socket.emit('joinroom',roomname);
+      });
+
+      socket.on('joinroom',function(session,data){
+        console.log(data.room);
+          socket.room=data.room;
+          socket.join(data.room);
+       });
+
       socket.on( 'drawLine', function(data, session ) 
       {
                   //  socket.broadcast.to(room).emit('new fan');
@@ -62,13 +76,10 @@ io.on('connection', function (socket)
                 winston.log('info','Room Name is '+room)
                 socket.broadcast.to(room).emit('drawLine',data);
             
-        });
-      //   socket.on('disconnect', function(session){
-      //     winston.log('info','client disconnected');
-      //     socket.leave(roomName);
-      // });
+      });
 
     });
+
 server.on('error', onError);
 server.on('listening', onListening);
 
