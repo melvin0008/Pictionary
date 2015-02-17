@@ -36,22 +36,6 @@ app.get('/',home.index);
 app.get('/room/:roomId',board.createGame);
 
 
-// app.use('/', routes,io);
-// app.use('/room', rooms);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
