@@ -1,4 +1,4 @@
-var socket = io.connect("http://piction.herokuapp.com",{'forceNew':true });
+var socket = io.connect("https://piction.herokuapp.com",{'forceNew':true });
 
 var createroom= function(){
 	var username=$('#cusername').val();
