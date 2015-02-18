@@ -32,42 +32,36 @@ var io = require('socket.io').listen(server);
 var pict=require('../pictionary')
 // require('../socket')(io);
 // 
-
+var clients=[];
     
     
 io.on('connection', function (socket) 
     {
-
-      // console.log(roomName);      
-
-      // socket.on('connect', function(data){
-        
-      // });
 
       socket.on( 'connectman', function(session) 
       {
         winston.log('info',"Client connected");
       });
 
-     socket.on( 'createroom', function(session ,data) 
+     socket.on( 'checkforroom', function(session ,data) 
       {
         var roomname=data.room;
         var username=data.user;
         winston.log('info',"Client connected");
         //check whether room exists 
         //if not
-        //
-        socket.username=username;
-        socket.roomname=roomname;
-        socket.join(roomname);
-        socket.emit('joinroom',roomname);
+        
+        socket.emit('changeurl',roomname);
       });
 
-      socket.on('joinroom',function(session,data){
-        console.log(data.room);
+      socket.on( 'joinroom', function(session,data) 
+      {
           socket.room=data.room;
+          socket.user=data.user;
+          clients.push(data.user);
           socket.join(data.room);
-       });
+      });
+
 
       socket.on( 'drawLine', function(data, session ) 
       {
@@ -77,6 +71,7 @@ io.on('connection', function (socket)
                 socket.broadcast.to(room).emit('drawLine',data);
             
       });
+
 
     });
 
