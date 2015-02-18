@@ -1,5 +1,5 @@
 //var socket = io.connect("http://localhost:3000");
-var socket = io.connect("https://pictoin.herokuapp.com");
+var socket = io.connect("https://piction.herokuapp.com");
 
 var createroom= function(){
 	var username=$('#cusername').val();
