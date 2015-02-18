@@ -43,15 +43,44 @@ io.on('connection', function (socket)
         winston.log('info',"Client connected");
       });
 
-     socket.on( 'checkforroom', function(session ,data) 
+     socket.on( 'checkforroomtocreate', function(session ,data) 
       {
         var roomname=data.room;
         var username=data.user;
         winston.log('info',"Client connected");
         //check whether room exists 
         //if not
+        var clients = io.sockets.adapter.rooms[roomname];   
+        if (clients)
+        {
+          var error="Room already exsits . Please create a new room.";
+          socket.emit('displayerror',error);
+        }
+        else
+        {
+          socket.emit('changeurl',roomname);
+        }
         
-        socket.emit('changeurl',roomname);
+      });
+
+       socket.on( 'checkforroomtojoin', function(session ,data) 
+      {
+        var roomname=data.room;
+        var username=data.user;
+        winston.log('info',"Client connected");
+        var clients = io.sockets.adapter.rooms[roomname];   
+        console.log(clients);
+        if (clients)
+        {
+           socket.emit('changeurl',roomname);
+        }
+        else
+        {
+          
+          var error="No room exists. Please create a room first";
+          socket.emit('displayerror',error);
+        }
+        
       });
 
       socket.on( 'joinroom', function(session,data) 
@@ -65,11 +94,18 @@ io.on('connection', function (socket)
 
       socket.on( 'drawLine', function(data, session ) 
       {
-                  //  socket.broadcast.to(room).emit('new fan');
-                var room=socket.room;
-                winston.log('info','Room Name is '+room)
-                socket.broadcast.to(room).emit('drawLine',data);
-            
+            //  socket.broadcast.to(room).emit('new fan');
+          if(socket.room)
+          {
+            var room=socket.room;
+            winston.log('info','Room Name is '+room)
+            socket.broadcast.to(room).emit('drawLine',data);
+          }
+          else
+          {
+            var error="Unauthorized access.";
+            socket.emit('displayerror',error);
+          }
       });
 
 

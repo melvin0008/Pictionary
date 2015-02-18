@@ -1,5 +1,5 @@
-//var socket = io.connect("http://localhost:3000");
-var socket = io.connect("https://piction.herokuapp.com");
+var socket = io.connect("http://localhost:3000");
+// var socket = io.connect("https://piction.herokuapp.com");
 
 var createroom= function(){
 	var username=$('#cusername').val();
@@ -8,8 +8,18 @@ var createroom= function(){
 	console.log(username);
 	console.log(roomname);
 	var sessionId = socket.io.engineid;
-	socket.emit("checkforroom",sessionId,{room:roomname,user:username});
+	socket.emit("checkforroomtocreate",sessionId,{room:roomname,user:username});
 }
+var joinroom= function(){
+	var username=$('#username').val();
+	// localstorage.setItem('username',username);
+	var roomname=$('#roomname').val();
+	console.log(username);
+	console.log(roomname);
+	var sessionId = socket.io.engineid;
+	socket.emit("checkforroomtojoin",sessionId,{room:roomname,user:username});
+}
+
 socket.on('connect', function(){
 			// firing back the connect event to the server
 			// and sending the nickname for the connected client
@@ -22,6 +32,13 @@ socket.on('connect', function(){
 			{
 				var currentUrl = window.location.href;
 				window.location=currentUrl+'room/'+roomname;
+			});
+
+			socket.on('displayerror',function(error)
+			{
+				$('#errorstring').html(error);
+				$('#error').modal('show');
+
 			});
 
 });

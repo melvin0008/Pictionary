@@ -1,5 +1,5 @@
-//var socket = io.connect("http://localhost:3000");
-var socket = io.connect("https://piction.herokuapp.com");
+var socket = io.connect("http://localhost:3000");
+// var socket = io.connect("https://piction.herokuapp.com");
 
 socket.on('connect', function(){
 			// firing back the connect event to the server
@@ -12,4 +12,9 @@ socket.on('connect', function(){
 			socket.emit("joinroom",sessionId,{room:roomname,user:username});
 			console.log("Connected");
 
+			socket.on('displayerror',function(error)
+			{
+				$('#errorstring').html(error);
+				$('#error').modal('show');
+			});
 });
