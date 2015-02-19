@@ -83,6 +83,15 @@ io.on('connection', function (socket)
         
       });
 
+
+      socket.on( 'new_message', function(session ,data) 
+      {
+        var roomname=data.room;
+        console.log("Enter");
+        socket.broadcast.to(roomname).emit('othermessage',data);
+        
+      });
+
       socket.on( 'joinroom', function(session,data) 
       {
           socket.room=data.room;

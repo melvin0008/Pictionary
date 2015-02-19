@@ -1,8 +1,8 @@
 <%- include layouts/header.ejs %>
-<script src="/socket.io/socket.io.js"></script>
-<script src="/js/clientfordraw.js"></script>
+
 <script src="/lib/js/paper-full.js" ></script>
 <script src="/js/draw.js" type="text/paperscript" canvas="draw"></script>
+
     <div class="container ">
     <div class="juumbotron">
 			<h1 align="center">Draw</h1>
@@ -11,39 +11,22 @@
     </div>
 <section class="module" >
   
-  <header class="top-bar">
+  <header  id="chatexpand" style="cursor: pointer;" class="top-bar">
     
     <div class="left">
-      <span class="icon typicons-message"></span>
-      <h1 ><span id="chatexpand" style="cursor: pointer;">Chats</span></h1>
-    </div>
-    
-    <div class="right">
-      <span class="icon typicons-minus"></span>
-      <span class="icon typicons-times"></span>
+      <!-- <span class="glyphicon glyphicon-search"></span>  -->
+      <h1 ><span  >Chats</span></h1>
     </div>
     
   </header>
   <div id="chatwindow">
-  <ol class="discussion">
-   <!--  <li class="other">
-      <label class="avatar">Illanrda</label>
-      <div class="messages">
-        <p></p>
-        <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
-      </div>
-    </li>
-    <li class="self">
-      
-      <div class="messages">
-       <time datetime="2009-11-13T20:14">37 mins</time>
-      </div>
-    </li>
-  </ol>
- --> <input id="inputMessage" type="text" class="form-control" placeholder="Enter message">
+  <ul class="discussion" >
+  </ul>
+ <input id="inputMessage" type="text" class="form-control" placeholder="Enter message" maxlength="27">
   </div>
 </section>
-
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/clientfordraw.js"></script>
 <script type="text/javascript" src="/js/canvasmod.js"></script>
     
 <%- include layouts/footer.ejs %>
