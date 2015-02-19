@@ -40,3 +40,8 @@ socket.on('connect', function(){
 			});
 
 });
+
+$(document).ready(function() {
+	console.log($(window).height());
+	$(".jumbotron").height($(window).height());
+});
