@@ -9,5 +9,41 @@
     </div>
       <canvas id="draw" > </canvas>
     </div>
+<section class="module" >
+  
+  <header class="top-bar">
+    
+    <div class="left">
+      <span class="icon typicons-message"></span>
+      <h1 ><span id="chatexpand" style="cursor: pointer;">Chats</span></h1>
+    </div>
+    
+    <div class="right">
+      <span class="icon typicons-minus"></span>
+      <span class="icon typicons-times"></span>
+    </div>
+    
+  </header>
+  <div id="chatwindow">
+  <ol class="discussion">
+   <!--  <li class="other">
+      <label class="avatar">Illanrda</label>
+      <div class="messages">
+        <p></p>
+        <time datetime="2009-11-13T20:00">Timothy • 51 min</time>
+      </div>
+    </li>
+    <li class="self">
+      
+      <div class="messages">
+       <time datetime="2009-11-13T20:14">37 mins</time>
+      </div>
+    </li>
+  </ol>
+ --> <input id="inputMessage" type="text" class="form-control" placeholder="Enter message">
+  </div>
+</section>
+
 <script type="text/javascript" src="/js/canvasmod.js"></script>
+    
 <%- include layouts/footer.ejs %>
