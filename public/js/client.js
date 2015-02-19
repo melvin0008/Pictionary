@@ -5,17 +5,15 @@ var createroom= function(){
 	var username=$('#cusername').val();
 	// localstorage.setItem('username',username);
 	var roomname=$('#croomname').val();
-	console.log(username);
-	console.log(roomname);
 	var sessionId = socket.io.engineid;
+	window.localstorage.setItem('username',username);
 	socket.emit("checkforroomtocreate",sessionId,{room:roomname,user:username});
 }
 var joinroom= function(){
 	var username=$('#username').val();
 	// localstorage.setItem('username',username);
 	var roomname=$('#roomname').val();
-	console.log(username);
-	console.log(roomname);
+	window.localstorage.setItem('username',username);
 	var sessionId = socket.io.engineid;
 	socket.emit("checkforroomtojoin",sessionId,{room:roomname,user:username});
 }
