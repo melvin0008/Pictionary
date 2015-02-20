@@ -13,7 +13,7 @@ var joinroom= function(){
 	var username=$('#username').val();
 	// localstorage.setItem('username',username);
 	var roomname=$('#roomname').val();
-	localstorage.setItem('username',username);
+	localStorage.setItem('username',username);
 	var sessionId = socket.io.engineid;
 	socket.emit("checkforroomtojoin",sessionId,{room:roomname,user:username});
 }
