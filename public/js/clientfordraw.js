@@ -22,7 +22,10 @@ var $inputMessage = $('#inputMessage');
 var sendMessage =function(opt,username,message) {
 
     if (message) {
-      $inputMessage.val('');
+      if(opt=="self")
+      {
+        $inputMessage.val('');
+      }
       addChatMessage({
         username: username,
         message: message
