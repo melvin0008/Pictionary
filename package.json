@@ -19,5 +19,8 @@
   },
   "engines": {
     "node": "1.4.*"
+  },
+  "devDependencies": {
+    "mongoose": "^3.8.24"
   }
 }

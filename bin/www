@@ -15,10 +15,6 @@ var winston = require('winston');
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
-/**
- * Create HTTP server.
- */
-
 var server = http.createServer(app);
 
 /**
@@ -26,7 +22,8 @@ var server = http.createServer(app);
  */
 
 var serverforsocket=server.listen(port);
-
+var mongoose = reuire('mongoose');
+mongoose.connect('mongodb://localhost/pictchat');
 
 var io = require('socket.io').listen(server);
 var pict=require('../pictionary')
