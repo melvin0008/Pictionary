@@ -1,5 +1,5 @@
-// var socket = io.connect("http://localhost:3000");
-var socket = io.connect("https://piction.herokuapp.com");
+var socket = io.connect("http://localhost:3000");
+// var socket = io.connect("https://piction.herokuapp.com");
 var FADE_TIME = 150; 
 var username = (localStorage.getItem('username'))? localStorage.getItem('username'):"temp"+(Math.floor((Math.random() * 100) + 1)).toString();
 var room =window.location.href;
