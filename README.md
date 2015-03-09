@@ -3,7 +3,8 @@ Pictionary
 
 
 Features:
-Finally multiroom working
+Multiple drawing rooms
+Chatting in each rooms
 
 Developing a game to simulate pictionary.
 
